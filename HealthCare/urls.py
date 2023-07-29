@@ -25,34 +25,49 @@ from django.contrib.sitemaps.views import sitemap
 from website.sitemaps import StaticViewSitemap
 from blog.sitemaps import BlogSitemap
 
-sitemaps = {
-    'static': StaticViewSitemap,
-    'blog': BlogSitemap
-}
+sitemaps = {"static": StaticViewSitemap, "blog": BlogSitemap}
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('website.urls')),
-    path('blog/', include('blog.urls')),
-    path('users/', include('users.urls')),
-
-    path('captcha/', include('captcha.urls')),
-    path('summernote/', include('django_summernote.urls')),
-    path('__debug__/', include('debug_toolbar.urls')),
-
-
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
-         name='django.contrib.sitemaps.views.sitemap'),
-    path('robots.txt', include('robots.urls')),     
-
-    path('reset_password/', auth_views.PasswordResetView.as_view(template_name='users/reset-password.html'), name='reset_password'),
-    path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(template_name='users/reset-password-sent.html'),name='password_reset_done'),
-    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='users/reset.html'), name='password_reset_confirm'),
-    path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(template_name='users/reset-password-complete.html'), name='password_reset_complete'),
+    path("admin/", admin.site.urls),
+    path("", include("website.urls")),
+    path("blog/", include("blog.urls")),
+    path("users/", include("users.urls")),
+    path("captcha/", include("captcha.urls")),
+    path("summernote/", include("django_summernote.urls")),
+    path("__debug__/", include("debug_toolbar.urls")),
+    path(
+        "sitemap.xml",
+        sitemap,
+        {"sitemaps": sitemaps},
+        name="django.contrib.sitemaps.views.sitemap",
+    ),
+    path("robots.txt", include("robots.urls")),
+    path(
+        "reset_password/",
+        auth_views.PasswordResetView.as_view(template_name="users/reset-password.html"),
+        name="reset_password",
+    ),
+    path(
+        "reset_password_sent/",
+        auth_views.PasswordResetDoneView.as_view(
+            template_name="users/reset-password-sent.html"
+        ),
+        name="password_reset_done",
+    ),
+    path(
+        "reset/<uidb64>/<token>/",
+        auth_views.PasswordResetConfirmView.as_view(template_name="users/reset.html"),
+        name="password_reset_confirm",
+    ),
+    path(
+        "reset_password_complete/",
+        auth_views.PasswordResetCompleteView.as_view(
+            template_name="users/reset-password-complete.html"
+        ),
+        name="password_reset_complete",
+    ),
 ]
-
 
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-

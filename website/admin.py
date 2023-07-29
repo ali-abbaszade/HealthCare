@@ -6,5 +6,3 @@ admin.site.register(Service)
 admin.site.register(TimeSchedule)
 admin.site.register(Contact)
 admin.site.register(Newsletter)
-
-
