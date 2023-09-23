@@ -1,10 +1,10 @@
 # HealthCare
-
+A healthcare web application to facilitate appointment scheduling and management for patients. The application can allow users to make appointments and an email notification will sent to them to confirm the appointment.  The web application has a blog section that provides health-related information and tips to users.
 ## Features
 
-- Blog
 - Patient Profile
 - Make Appointment
+- Blog
 
 ## Instalation
 
